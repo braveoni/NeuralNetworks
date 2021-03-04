@@ -65,6 +65,11 @@ class FeedForward:
         return np.dot(delta, weight.T) * derivative_sigmoid(output)
 
     def train(self, inputs, expectation):
+        """
+        Training Neural Network
+        :param inputs: np.array of inputs data
+        :param expectation: np.array of predictions for inputs data
+        """
         for _ in range(self.EPOCHS):
             for x, y in zip(inputs, expectation):
                 x = x[np.newaxis, :]

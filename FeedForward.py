@@ -2,7 +2,7 @@ import numpy as np
 from Functions import sigmoid, derivative_sigmoid
 
 
-class FeedForward:
+class FeedForwardNeuralNetwork:
     def __init__(self, *args, **kwargs):
         self.__w = []
         self.__b = []
@@ -95,3 +95,27 @@ class FeedForward:
 
     def predict(self, x):
         return np.max(self.feedforward(x)[-1])
+
+
+data_set = np.array([
+    [1],
+    [3],
+    [5],
+    [7],
+])
+
+data_y = np.array([
+    [3],
+    [2],
+    [5],
+    [3],
+])
+
+
+model = FeedForward(1, 4, 1, alpha=0.0, learn_rate=0.0003, epochs=10)
+model.train(data_set, data_y)
+
+
+print(model.predict(np.array([[2]])))
+print(model.predict(np.array([[4]])))
+print(model.predict(np.array([[6]])))
